@@ -1,5 +1,7 @@
 # Audio Library Read Speed Comparison
 
+English | [中文](README_zh.md)
+
 ## Project Overview
 
 This project aims to benchmark and compare the read speed performance of different Python audio processing libraries, helping developers choose the most suitable audio library for their needs.
@@ -89,7 +91,8 @@ The program will automatically:
 - `read_speed.py` - Main test script
 - `audio_library_read_speed_comparison.png` - Test result chart
 - `audio_*s_*Hz.wav` - Test audio files with different configurations
-- `README.md` - Project documentation
+- `README.md` - Project documentation (English)
+- `README_zh.md` - Project documentation (Chinese)
 
 ## Technical Details
 
@@ -110,4 +113,4 @@ Welcome to submit Issues and Pull Requests to improve test methods or add new te
 
 ## License
 
-MIT License 
+MIT License
