@@ -1,113 +1,113 @@
-# 音频库读取速度对比测试
+# Audio Library Read Speed Comparison
 
-## 项目概述
+## Project Overview
 
-本项目旨在对比测试不同Python音频处理库的读取速度性能，帮助开发者选择最适合的音频处理库。
+This project aims to benchmark and compare the read speed performance of different Python audio processing libraries, helping developers choose the most suitable audio library for their needs.
 
-## 测试目的
+## Purpose
 
-随着音频处理在机器学习、信号处理等领域的广泛应用，选择一个高效的音频读取库变得至关重要。本项目通过对比主流Python音频库的读取性能，为开发者提供客观的性能参考数据。
+With the widespread application of audio processing in machine learning, signal processing, and other fields, choosing an efficient audio reading library has become crucial. This project provides objective performance reference data by comparing the read performance of mainstream Python audio libraries.
 
-## 测试库
+## Tested Libraries
 
-本项目测试了以下5个主流Python音频处理库：
+This project benchmarks the following 5 mainstream Python audio processing libraries:
 
-1. **Librosa** - 音频和音乐分析的专业库
-2. **Torchaudio** - PyTorch生态系统的音频处理库  
-3. **Soundfile** - 基于libsndfile的音频文件读写库
-4. **Pydub** - 简单易用的音频操作库
-5. **Wave** - Python标准库中的音频模块
+1. **Librosa** - Professional library for audio and music analysis
+2. **Torchaudio** - Audio processing library for PyTorch ecosystem  
+3. **Soundfile** - Audio file I/O library based on libsndfile
+4. **Pydub** - Simple and easy-to-use audio manipulation library
+5. **Wave** - Audio module from Python standard library
 
-## 测试方案
+## Test Methodology
 
-### 测试1：完整音频文件读取
-- **音频时长**: 5秒, 10秒, 20秒, 40秒, 60秒
-- **采样率**: 16kHz, 22.05kHz, 48kHz
-- **测试方法**: 每个配置重复读取100次，计算平均时间
+### Test 1: Complete Audio File Reading
+- **Audio Duration**: 5s, 10s, 20s, 40s, 60s
+- **Sample Rates**: 16kHz, 22.05kHz, 48kHz
+- **Test Method**: Read each configuration 100 times and calculate average time
 
-### 测试2：随机片段读取
-- **基础文件**: 5分钟@16kHz的长音频文件
-- **片段时长**: 5秒随机片段
-- **测试方法**: 随机选择起始位置，重复读取100次
+### Test 2: Random Segment Reading
+- **Base File**: 5-minute audio file @ 16kHz
+- **Segment Duration**: 5-second random segments
+- **Test Method**: Randomly select start positions, repeat 100 times
 
-## 测试结果
+## Test Results
 
-![音频库读取速度对比](audio_library_read_speed_comparison.png)
+![Audio Library Read Speed Comparison](audio_library_read_speed_comparison.png)
 
-*上图展示了各个音频库在不同测试场景下的平均读取时间（秒）*
+*The above chart shows the average read time (seconds) for each audio library across different test scenarios*
 
-## 主要结论
+## Key Findings
 
-基于测试结果，我们得出以下主要结论：
+Based on the test results, we draw the following key conclusions:
 
-### 🏆 总体性能排名
+### 🏆 Overall Performance Ranking
 
-1. **Soundfile** - 整体性能最优，在大部分测试场景中表现最佳
-2. **Wave** - 标准库表现稳定，但仅支持WAV格式
-3. **Torchaudio** - 在某些场景下性能良好，特别适合深度学习项目
-4. **Librosa** - 功能丰富但读取速度相对较慢
-5. **Pydub** - 使用简单但性能一般
+1. **Soundfile** - Best overall performance, excelling in most test scenarios
+2. **Wave** - Stable performance from standard library, but WAV format only
+3. **Torchaudio** - Good performance in certain scenarios, especially suitable for deep learning projects
+4. **Librosa** - Feature-rich but relatively slower read speed
+5. **Pydub** - Easy to use but average performance
 
-### 📊 详细分析
+### 📊 Detailed Analysis
 
-- **短音频文件（5-10秒）**: Soundfile和Wave表现最佳
-- **中等长度音频（20-40秒）**: Soundfile持续领先
-- **长音频文件（60秒+）**: Soundfile优势更加明显
-- **高采样率音频**: Soundfile在48kHz采样率下仍保持优势
-- **随机片段读取**: Soundfile在随机访问场景下性能最佳
+- **Short audio files (5-10s)**: Soundfile and Wave perform best
+- **Medium-length audio (20-40s)**: Soundfile maintains the lead
+- **Long audio files (60s+)**: Soundfile advantage becomes more pronounced
+- **High sample rate audio**: Soundfile maintains advantage even at 48kHz
+- **Random segment reading**: Soundfile performs best in random access scenarios
 
-### 🎯 使用建议
+### 🎯 Usage Recommendations
 
-- **性能优先**: 推荐使用 **Soundfile**
-- **标准库需求**: 可选择 **Wave**（仅WAV格式）
-- **深度学习项目**: 推荐 **Torchaudio**（与PyTorch生态集成度高）
-- **音频分析项目**: 可选择 **Librosa**（功能最丰富）
-- **简单音频操作**: 可选择 **Pydub**（API最友好）
+- **Performance Priority**: Recommended **Soundfile**
+- **Standard Library Requirement**: Choose **Wave** (WAV format only)
+- **Deep Learning Projects**: Recommended **Torchaudio** (high integration with PyTorch ecosystem)
+- **Audio Analysis Projects**: Choose **Librosa** (most feature-rich)
+- **Simple Audio Operations**: Choose **Pydub** (most user-friendly API)
 
-## 运行说明
+## Usage Instructions
 
-### 环境要求
+### Requirements
 
 ```bash
 pip install librosa torchaudio soundfile pydub matplotlib numpy scipy
 ```
 
-### 运行测试
+### Running the Test
 
 ```bash
 python read_speed.py
 ```
 
-程序会自动：
-1. 生成测试所需的音频文件（如果不存在）
-2. 运行性能测试
-3. 生成结果图表
-4. 输出Markdown格式的结果表格
+The program will automatically:
+1. Generate required test audio files (if they don't exist)
+2. Run performance tests
+3. Generate result charts
+4. Output results in Markdown format
 
-## 文件说明
+## File Description
 
-- `read_speed.py` - 主测试脚本
-- `audio_library_read_speed_comparison.png` - 测试结果图表
-- `audio_*s_*Hz.wav` - 不同配置的测试音频文件
-- `README.md` - 项目说明文档
+- `read_speed.py` - Main test script
+- `audio_library_read_speed_comparison.png` - Test result chart
+- `audio_*s_*Hz.wav` - Test audio files with different configurations
+- `README.md` - Project documentation
 
-## 技术细节
+## Technical Details
 
-### 测试方法
-- 使用 `time.perf_counter()` 进行高精度计时
-- 每个测试重复100次取平均值
-- 错误处理和异常情况标记
-- 支持缺失库的优雅降级
+### Test Methodology
+- Uses `time.perf_counter()` for high-precision timing
+- Each test repeated 100 times for averaging
+- Error handling and exception case marking
+- Graceful degradation for missing libraries
 
-### 音频文件生成
-- 使用440Hz正弦波生成测试音频
-- 16位整型格式
-- 自动生成不同时长和采样率的组合
+### Audio File Generation
+- Uses 440Hz sine wave to generate test audio
+- 16-bit integer format
+- Automatically generates combinations of different durations and sample rates
 
-## 贡献
+## Contributing
 
-欢迎提交Issue和Pull Request来改进测试方法或添加新的测试库。
+Welcome to submit Issues and Pull Requests to improve test methods or add new test libraries.
 
-## 许可证
+## License
 
 MIT License 
